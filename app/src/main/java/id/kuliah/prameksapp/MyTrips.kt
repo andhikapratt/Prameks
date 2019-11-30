@@ -33,12 +33,10 @@ class MyTrips : AppCompatActivity() {
         loading.show()
 
         val bundle = intent.extras
-        val asl = bundle?.get("asal").toString()
-        val tuj = bundle?.get("tuju").toString()
+        val penumm = bundle?.get("id_penumpang").toString()
 
-        AndroidNetworking.post(ApiKoneksi.READ)
-            .addBodyParameter("asal",asl)
-            .addBodyParameter("tujuan",tuj)
+        AndroidNetworking.post(ApiKoneksi.READ5)
+            .addBodyParameter("id_akun",penumm)
             .setPriority(Priority.MEDIUM)
             .build()
             .getAsJSONObject(object : JSONObjectRequestListener {
@@ -51,20 +49,23 @@ class MyTrips : AppCompatActivity() {
                     val list_c = arrayListOf<String>()
                     val list_d = arrayListOf<String>()
                     val list_e = arrayListOf<String>()
+                    val list_f = arrayListOf<String>()
+                    val list_g = arrayListOf<String>()
 
                     for(i in 0 until jsonArray?.length()!!) {
                         val jsonObject = jsonArray?.optJSONObject(i)
+
                         list_a.add((jsonObject.getString("namakrt")).toString())
-                        list_b.add((jsonObject.getString("asal")).toString())
-                        list_c.add((jsonObject.getString("tujuan")).toString())
-                        list_d.add((jsonObject.getString("jam_brk")).toString())
-                        list_e.add((jsonObject.getString("id")).toString())
+                        list_b.add((jsonObject.getString("kode_bayar")).toString())
+                        list_c.add((jsonObject.getString("asal")).toString())
+                        list_d.add((jsonObject.getString("tujuan")).toString())
+                        list_e.add((jsonObject.getString("jam_brk")).toString())
+                        list_f.add((jsonObject.getString("jam_smp")).toString())
+                        list_g.add((jsonObject.getString("harga")).toString())
 
                         if (jsonArray?.length()-1 == i) {
                             loading.dismiss()
-
-                            //mengirim data" ke adapter LvAdapterTampilTiket untuk menampilkan data ke listview
-                            val adapter = LvAdapterMyTrips(this@MyTrips, list_e, list_a, list_b, list_c, list_d)
+                            val adapter = LvAdapterMyTrips(this@MyTrips, list_a, list_b, list_c, list_d, list_e, list_f, list_g)
                             lvnya.adapter = adapter
                         }
                     }

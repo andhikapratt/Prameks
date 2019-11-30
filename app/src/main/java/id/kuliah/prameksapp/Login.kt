@@ -28,7 +28,7 @@ class Login : AppCompatActivity() {
 
     private fun CekLogin(){
         val loading = ProgressDialog(this)
-        loading.setMessage("Memuat data...")
+        loading.setMessage("Memeriksa Data...")
         loading.show()
 
         val userr = et_user.getText().toString()
@@ -57,6 +57,10 @@ class Login : AppCompatActivity() {
                             startActivity(intent)
                         }
                     }
+                    if(tv_id_ambil.getText() == "0"){
+                        Toast.makeText(this@Login, "Ojo ngawur bos", Toast.LENGTH_SHORT).show()
+                    }
+
                 }
 
                 override fun onError(anError: ANError?) {

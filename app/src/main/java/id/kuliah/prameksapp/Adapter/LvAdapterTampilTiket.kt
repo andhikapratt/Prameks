@@ -5,7 +5,6 @@ import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.TextView
 import id.kuliah.prameksapp.R
-import id.kuliah.prameksapp.ReviewTiket
 import id.kuliah.prameksapp.TampilTiket
 
 class LvAdapterTampilTiket(private val context: TampilTiket,

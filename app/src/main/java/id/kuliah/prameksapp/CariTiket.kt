@@ -47,9 +47,17 @@ class CariTiket : AppCompatActivity() {
             intent.putExtra("id_penumpang",id_penumpang)
             startActivity(intent)
         }
+
+        bt_mytrips.setOnClickListener{
+            intent = Intent(this, MyTrips::class.java)
+            intent.putExtra("id_penumpang",id_penumpang)
+            startActivity(intent)
+        }
     }
 
     override fun onSupportNavigateUp(): Boolean {
+        intent = Intent(this, Login::class.java)
+        startActivity(intent)
         onBackPressed()
         return true
     }

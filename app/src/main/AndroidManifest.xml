@@ -14,7 +14,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MyTrips"></activity>
+
+        <activity android:name=".MyTrips" />
         <activity android:name=".DetailPembayaran" />
         <activity android:name=".Selesai" />
         <activity android:name=".Pembayaran" />
@@ -23,7 +24,9 @@
         <activity android:name=".DataPenumpang" />
         <activity android:name=".Koneksi.activity_data_penumpang" />
         <activity android:name=".CariTiket" />
-        <activity android:name=".Login">
+        <activity android:name=".Login"/>
+        <activity android:name=".SplashScreen"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

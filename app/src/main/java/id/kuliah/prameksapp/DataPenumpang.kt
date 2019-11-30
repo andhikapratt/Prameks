@@ -1,7 +1,9 @@
 package id.kuliah.prameksapp
 
+import android.app.AlertDialog
 import android.app.ProgressDialog
 import android.content.Intent
+import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -31,10 +33,27 @@ class DataPenumpang : AppCompatActivity() {
         val id_penum = bundle?.get("id_penumpang").toString()
 
         bt_go.setOnClickListener{
-            intent = Intent(this, Pembayaran::class.java)
-            intent.putExtra("id_kereta", id_kereta)
-            intent.putExtra("id_penumpang", id_penum)
-            startActivity(intent)
+            val builder = AlertDialog.Builder(this@DataPenumpang)
+            builder.setTitle("Konfirmasi")
+            builder.setMessage("Pilih 'Ya' untuk memesan tiket")
+            builder.setPositiveButton("Ya"){dialog, which ->
+                intent = Intent(this, Pembayaran::class.java)
+                intent.putExtra("id_kereta", id_kereta)
+                intent.putExtra("id_penumpang", id_penum)
+                startActivity(intent)
+            }
+
+            builder.setNegativeButton("Tidak"){dialog,which ->
+                intent = Intent(this, CariTiket::class.java)
+                intent.putExtra("id_penumpang", id_penum)
+                startActivity(intent)
+            }
+
+            builder.setNeutralButton("Batal"){_,_ ->
+
+            }
+            val dialog: AlertDialog = builder.create()
+            dialog.show()
         }
     }
 

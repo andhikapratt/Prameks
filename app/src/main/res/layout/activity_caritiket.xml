@@ -9,12 +9,13 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="10dp"
             android:background="#50A4D1"/>
+
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -114,38 +115,36 @@
                 android:id="@+id/tv_asal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="40dp"
                 android:text="TextView"
                 android:textColor="#fff"
-                app:layout_constraintTop_toBottomOf="@+id/bt_mytrips"
                 tools:ignore="MissingConstraints"
-                tools:layout_editor_absoluteX="176dp" />
+                tools:layout_editor_absoluteX="21dp"
+                tools:layout_editor_absoluteY="95dp" />
 
             <TextView
                 android:id="@+id/tv_tuju"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="40dp"
                 android:text="TextView"
                 android:textColor="#fff"
-                app:layout_constraintTop_toBottomOf="@+id/bt_mytrips"
                 tools:ignore="MissingConstraints"
-                tools:layout_editor_absoluteX="176dp" />
+                tools:layout_editor_absoluteX="22dp"
+                tools:layout_editor_absoluteY="95dp" />
         </androidx.constraintlayout.widget.ConstraintLayout>
-        <LinearLayout
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#50A4D1"
+        android:layout_marginTop="50dp"
+        tools:ignore="MissingConstraints">
+        <ImageView
+            android:id="@+id/imageView"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="#50A4D1"
-            android:layout_marginTop="30dp"
-            tools:ignore="MissingConstraints">
-            <ImageView
-                android:id="@+id/imageView"
-                android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_gravity="center"
-                android:src="@drawable/prams"
-                tools:ignore="MissingConstraints"
-                tools:layout_editor_absoluteX="0dp" />
-        </LinearLayout>
+            android:layout_height="30dp"
+            android:layout_gravity="center"
+            android:src="@drawable/prams"
+            tools:ignore="MissingConstraints"
+            tools:layout_editor_absoluteX="0dp" />
     </LinearLayout>
 </LinearLayout>
