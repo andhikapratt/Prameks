@@ -1,0 +1,29 @@
+<resources>
+    <string name="app_name">PrameksApp</string>
+    <string-array name="asal_dd">
+        <item>Yogyakarta</item>
+        <item>Solo</item>
+    </string-array>
+
+    <string-array name="tuju_dd">
+        <item>Solo</item>
+        <item>Yogyakarta</item>
+    </string-array>
+
+    <string-array name="hari">
+        <item>Senin</item>
+        <item>Selasa</item>
+        <item>Rabu</item>
+        <item>Kamis</item>
+        <item>Jumat</item>
+        <item>Sabtu</item>
+        <item>Minggu</item>
+    </string-array>
+
+    <string-array name="bayar">
+        <item>BANK BRI</item>
+        <item>BANK MANDIRI</item>
+        <item>BANK BCA</item>
+        <item>BANG TITIL</item>
+    </string-array>
+</resources>

@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#fff">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            android:background="#50A4D1"/>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#fff">
+
+            <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="40dp"
+                android:layout_height="30dp"
+                android:layout_marginTop="12dp"
+                android:background="@drawable/arrow"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/sp_asal"
+                tools:ignore="MissingConstraints" />
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:text="Cari Kereta"
+                android:textAlignment="center"
+                android:textSize="35sp"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="MissingConstraints"
+                tools:layout_editor_absoluteX="0dp" />
+
+            <Spinner
+                android:id="@+id/sp_asal"
+                android:layout_width="250dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="64dp"
+                android:background="@drawable/border"
+                android:entries="@array/asal_dd"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.503"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView"
+                tools:ignore="MissingConstraints" />
+
+            <Spinner
+                android:id="@+id/sp_tuj"
+                android:layout_width="250dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="12dp"
+                android:background="@drawable/border"
+                android:entries="@array/tuju_dd"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.496"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imageView2"
+                tools:ignore="MissingConstraints" />
+
+            <Spinner
+                android:id="@+id/sp_hari"
+                android:layout_width="250dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="32dp"
+                android:background="@drawable/border"
+                android:entries="@array/hari"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/sp_tuj"
+                tools:ignore="MissingConstraints" />
+
+            <Button
+                android:id="@+id/bt_mytrips"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/border_bt"
+                android:text="My Trips"
+                android:textColor="#fff"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.496"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/bt_cari"
+                app:layout_constraintVertical_bias="0.104"
+                tools:ignore="MissingConstraints" />
+
+            <Button
+                android:id="@+id/bt_cari"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="56dp"
+                android:background="@drawable/border_bt"
+                android:text="Cari Kereta"
+                android:textColor="#fff"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.503"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/sp_hari"
+                tools:ignore="MissingConstraints" />
+
+            <TextView
+                android:id="@+id/tv_asal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp"
+                android:text="TextView"
+                android:textColor="#fff"
+                app:layout_constraintTop_toBottomOf="@+id/bt_mytrips"
+                tools:ignore="MissingConstraints"
+                tools:layout_editor_absoluteX="176dp" />
+
+            <TextView
+                android:id="@+id/tv_tuju"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp"
+                android:text="TextView"
+                android:textColor="#fff"
+                app:layout_constraintTop_toBottomOf="@+id/bt_mytrips"
+                tools:ignore="MissingConstraints"
+                tools:layout_editor_absoluteX="176dp" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#50A4D1"
+            android:layout_marginTop="30dp"
+            tools:ignore="MissingConstraints">
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_gravity="center"
+                android:src="@drawable/prams"
+                tools:ignore="MissingConstraints"
+                tools:layout_editor_absoluteX="0dp" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

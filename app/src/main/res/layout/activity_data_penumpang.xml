@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".DataPenumpang">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/shadow"
+        android:orientation="vertical"
+        tools:ignore="MissingConstraints">
+
+        <LinearLayout
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            android:background="#50A4D1"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"/>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:layout_editor_absoluteY="20dp">
+
+            <TextView
+                android:id="@+id/txt_nmkrt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="36dp"
+                android:text="Data Penumpang"
+                android:textSize="30sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.503"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/txt_harga"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="48dp"
+                android:layout_marginTop="36dp"
+                android:text="*pastikan identitas anda sudah benar"
+                android:textSize="15sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView12" />
+
+            <TextView
+                android:id="@+id/textView8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="48dp"
+                android:layout_marginTop="60dp"
+                android:text="No KTP"
+                android:textSize="20sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txt_nmkrt" />
+
+            <TextView
+                android:id="@+id/textView10"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="48dp"
+                android:layout_marginTop="20dp"
+                android:text="Nama"
+                android:textSize="20sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView8" />
+
+            <TextView
+                android:id="@+id/textView11"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="48dp"
+                android:layout_marginTop="20dp"
+                android:text="No Telp"
+                android:textSize="20sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView10" />
+
+            <TextView
+                android:id="@+id/textView12"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="48dp"
+                android:layout_marginTop="20dp"
+                android:text="Email"
+                android:textSize="20sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView11" />
+
+            <EditText
+                android:id="@+id/et_ktp"
+                android:layout_width="190dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="48dp"
+                android:layout_marginTop="52dp"
+                android:ems="10"
+                android:inputType="textPersonName"
+                app:layout_constraintStart_toEndOf="@+id/textView8"
+                app:layout_constraintTop_toBottomOf="@+id/txt_nmkrt" />
+
+            <EditText
+                android:id="@+id/et_nama"
+                android:layout_width="190dp"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textPersonName"
+                app:layout_constraintStart_toStartOf="@+id/et_ktp"
+                app:layout_constraintTop_toBottomOf="@+id/et_ktp" />
+
+            <EditText
+                android:id="@+id/et_notelp"
+                android:layout_width="190dp"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textPersonName"
+                app:layout_constraintStart_toStartOf="@+id/et_nama"
+                app:layout_constraintTop_toBottomOf="@+id/et_nama" />
+
+            <EditText
+                android:id="@+id/et_email"
+                android:layout_width="190dp"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textPersonName"
+                app:layout_constraintStart_toStartOf="@+id/et_notelp"
+                app:layout_constraintTop_toBottomOf="@+id/et_notelp" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+        <LinearLayout
+            android:layout_marginTop="60dp"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="#50A4D1"
+            android:layout_marginBottom="80dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp">
+
+            <Button
+                android:id="@+id/bt_go"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:background="#50A4D1"
+                android:text="Pesan Tiket"
+                android:textAlignment="center"
+                android:textColor="#fff"
+                android:textSize="20sp" />
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:background="#50A4D1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:ignore="MissingConstraints">
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_gravity="center"
+            android:src="@drawable/prams"
+            tools:ignore="MissingConstraints"
+            tools:layout_editor_absoluteX="0dp" />
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
