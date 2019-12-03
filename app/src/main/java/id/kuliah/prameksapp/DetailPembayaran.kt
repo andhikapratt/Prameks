@@ -21,6 +21,7 @@ class DetailPembayaran : AppCompatActivity() {
             intent = Intent(this, CariTiket::class.java)
             intent.putExtra("id_penumpang", id_penum)
             startActivity(intent)
+            finish()
         }
     }
 }

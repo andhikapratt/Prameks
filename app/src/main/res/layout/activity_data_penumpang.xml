@@ -103,6 +103,7 @@
                 android:layout_marginStart="48dp"
                 android:layout_marginTop="52dp"
                 android:ems="10"
+                android:editable="false"
                 android:inputType="textPersonName"
                 app:layout_constraintStart_toEndOf="@+id/textView8"
                 app:layout_constraintTop_toBottomOf="@+id/txt_nmkrt" />
@@ -112,6 +113,7 @@
                 android:layout_width="190dp"
                 android:layout_height="wrap_content"
                 android:ems="10"
+                android:editable="false"
                 android:inputType="textPersonName"
                 app:layout_constraintStart_toStartOf="@+id/et_ktp"
                 app:layout_constraintTop_toBottomOf="@+id/et_ktp" />
@@ -121,6 +123,7 @@
                 android:layout_width="190dp"
                 android:layout_height="wrap_content"
                 android:ems="10"
+                android:editable="false"
                 android:inputType="textPersonName"
                 app:layout_constraintStart_toStartOf="@+id/et_nama"
                 app:layout_constraintTop_toBottomOf="@+id/et_nama" />
@@ -130,6 +133,7 @@
                 android:layout_width="190dp"
                 android:layout_height="wrap_content"
                 android:ems="10"
+                android:editable="false"
                 android:inputType="textPersonName"
                 app:layout_constraintStart_toStartOf="@+id/et_notelp"
                 app:layout_constraintTop_toBottomOf="@+id/et_notelp" />

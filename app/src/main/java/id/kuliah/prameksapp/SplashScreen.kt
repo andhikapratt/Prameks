@@ -12,12 +12,7 @@ class SplashScreen : AppCompatActivity() {
         setContentView(R.layout.activity_splash_screen)
 
         Handler().postDelayed({
-            // This method will be executed once the timer is over
-            // Start your app main activity
-
             startActivity(Intent(this,Login::class.java))
-
-            // close this activity
             finish()
         }, SPLASH_TIME_OUT)
     }

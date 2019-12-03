@@ -26,7 +26,6 @@ class DataPenumpang : AppCompatActivity() {
         val actionbar = supportActionBar
         actionbar!!.title = "Pemesanan"
         actionbar.setDisplayHomeAsUpEnabled(true)
-        actionbar.setDisplayHomeAsUpEnabled(true)
 
         val bundle = intent.extras
         val id_kereta = bundle?.get("id_kereta").toString()

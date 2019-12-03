@@ -1,13 +1,21 @@
 package id.kuliah.prameksapp
 
+import android.app.AlertDialog
 import android.app.ProgressDialog
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.AdapterView
 import android.widget.Toast
+import com.androidnetworking.AndroidNetworking
+import com.androidnetworking.common.Priority
+import com.androidnetworking.error.ANError
+import com.androidnetworking.interfaces.JSONObjectRequestListener
+import id.kuliah.prameksapp.Koneksi.ApiKoneksi
 import kotlinx.android.synthetic.main.activity_caritiket.*
+import org.json.JSONObject
 
 class CariTiket : AppCompatActivity() {
 
@@ -18,7 +26,6 @@ class CariTiket : AppCompatActivity() {
         loading.dismiss()
         val actionbar = supportActionBar
         actionbar!!.title = "Prameks"
-        actionbar.setDisplayHomeAsUpEnabled(true)
         actionbar.setDisplayHomeAsUpEnabled(true)
 
         val bundle = intent.extras
@@ -56,9 +63,22 @@ class CariTiket : AppCompatActivity() {
     }
 
     override fun onSupportNavigateUp(): Boolean {
-        intent = Intent(this, Login::class.java)
-        startActivity(intent)
+        val builder = AlertDialog.Builder(this@CariTiket)
+        builder.setTitle("Logout")
+        builder.setMessage("Apakah anda yakin?")
+
+        builder.setPositiveButton("Ya"){dialog, which ->
+            intent = Intent(this, Login::class.java)
+            startActivity(intent)
+        }
+
+        builder.setNegativeButton("Tidak"){dialog,which ->
+
+        }
+        val dialog: AlertDialog = builder.create()
+        dialog.show()
         onBackPressed()
+        finish()
         return true
     }
 

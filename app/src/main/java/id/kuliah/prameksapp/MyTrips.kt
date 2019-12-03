@@ -1,6 +1,8 @@
 package id.kuliah.prameksapp
 
+import android.app.AlertDialog
 import android.app.ProgressDialog
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -20,6 +22,63 @@ class MyTrips : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_my_trips)
+        val actionbar = supportActionBar
+        actionbar!!.title = "My Trips"
+        actionbar.setDisplayHomeAsUpEnabled(true)
+
+        val bundle = intent.extras
+        val penumm = bundle?.get("id_penumpang").toString()
+
+        lvnya.setOnItemClickListener{adapterView, view, position, id ->
+            val loading = ProgressDialog(this)
+            val builder = AlertDialog.Builder(this@MyTrips)
+            builder.setTitle("Konfirmasi")
+            builder.setMessage("Hapus data?")
+            builder.setPositiveButton("Ya"){dialog, which ->
+
+            val itemAtPos = adapterView.getItemAtPosition(position)
+
+            AndroidNetworking.post(ApiKoneksi.DELETE)
+                .addBodyParameter("kode_bayar",itemAtPos.toString())
+                .setPriority(Priority.MEDIUM)
+                .build()
+                .getAsJSONObject(object : JSONObjectRequestListener {
+
+                    override fun onResponse(response: JSONObject?) {
+                        loading.dismiss()
+                        Toast.makeText(applicationContext,response?.getString("message"), Toast.LENGTH_SHORT).show()
+                        if(response?.getString("message")?.contains("successfully")!!){}
+                    }
+                    override fun onError(anError: ANError?) {
+                        loading.dismiss()
+                        Log.d("ONERROR",anError?.errorDetail?.toString())
+                        Toast.makeText(applicationContext,"Connection Failure", Toast.LENGTH_SHORT).show()
+                    }
+                })
+
+                intent = Intent(this, MyTrips::class.java)
+                intent.putExtra("id_penumpang",penumm)
+                startActivity(intent)
+            }
+
+            builder.setNegativeButton("Batal"){dialog,which ->}
+
+            builder.setNeutralButton(""){_,_ ->
+
+            }
+            val dialog: AlertDialog = builder.create()
+            dialog.show()
+        }
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        val bundle = intent.extras
+        val penumm = bundle?.get("id_penumpang").toString()
+        intent = Intent(this, CariTiket::class.java)
+        intent.putExtra("id_penumpang",penumm)
+        startActivity(intent)
+        onBackPressed()
+        return true
     }
 
     override fun onResume(){
