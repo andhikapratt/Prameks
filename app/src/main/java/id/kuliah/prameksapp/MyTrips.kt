@@ -27,7 +27,7 @@ class MyTrips : AppCompatActivity() {
         actionbar.setDisplayHomeAsUpEnabled(true)
 
         val bundle = intent.extras
-        val penumm = bundle?.get("id_penumpang").toString()
+        val penumm = bundle?.get("ktp").toString()
 
         lvnya.setOnItemClickListener{adapterView, view, position, id ->
             val loading = ProgressDialog(this)
@@ -57,7 +57,7 @@ class MyTrips : AppCompatActivity() {
                 })
 
                 intent = Intent(this, MyTrips::class.java)
-                intent.putExtra("id_penumpang",penumm)
+                intent.putExtra("ktp",penumm)
                 startActivity(intent)
             }
 
@@ -70,32 +70,32 @@ class MyTrips : AppCompatActivity() {
             dialog.show()
         }
     }
-
+//==================================================================================================
     override fun onSupportNavigateUp(): Boolean {
         val bundle = intent.extras
-        val penumm = bundle?.get("id_penumpang").toString()
+        val penumm = bundle?.get("ktp").toString()
         intent = Intent(this, CariTiket::class.java)
-        intent.putExtra("id_penumpang",penumm)
+        intent.putExtra("ktp",penumm)
         startActivity(intent)
         onBackPressed()
         return true
     }
-
+//==================================================================================================
     override fun onResume(){
         super.onResume()
         TampilSepur()
     }
-
+//==================================================================================================
     private fun TampilSepur(){
         val loading = ProgressDialog(this)
         loading.setMessage("Memuat data...")
         loading.show()
 
         val bundle = intent.extras
-        val penumm = bundle?.get("id_penumpang").toString()
+        val penumm = bundle?.get("ktp").toString()
 
         AndroidNetworking.post(ApiKoneksi.READ5)
-            .addBodyParameter("id_akun",penumm)
+            .addBodyParameter("ktp",penumm)
             .setPriority(Priority.MEDIUM)
             .build()
             .getAsJSONObject(object : JSONObjectRequestListener {
@@ -137,4 +137,5 @@ class MyTrips : AppCompatActivity() {
                 }
             })
     }
+//==================================================================================================
 }

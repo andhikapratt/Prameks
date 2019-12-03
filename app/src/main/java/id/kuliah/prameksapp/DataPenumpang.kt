@@ -29,7 +29,7 @@ class DataPenumpang : AppCompatActivity() {
 
         val bundle = intent.extras
         val id_kereta = bundle?.get("id_kereta").toString()
-        val id_penum = bundle?.get("id_penumpang").toString()
+        val id_penum = bundle?.get("ktp").toString()
 
         bt_go.setOnClickListener{
             val builder = AlertDialog.Builder(this@DataPenumpang)
@@ -38,13 +38,13 @@ class DataPenumpang : AppCompatActivity() {
             builder.setPositiveButton("Ya"){dialog, which ->
                 intent = Intent(this, Pembayaran::class.java)
                 intent.putExtra("id_kereta", id_kereta)
-                intent.putExtra("id_penumpang", id_penum)
+                intent.putExtra("ktp", id_penum)
                 startActivity(intent)
             }
 
             builder.setNegativeButton("Tidak"){dialog,which ->
                 intent = Intent(this, CariTiket::class.java)
-                intent.putExtra("id_penumpang", id_penum)
+                intent.putExtra("ktp", id_penum)
                 startActivity(intent)
             }
 
@@ -61,11 +61,11 @@ class DataPenumpang : AppCompatActivity() {
 
         val bundle = intent.extras
         val asl = bundle?.get("id_kereta").toString()
-        val id_penumpang = bundle?.get("id_penumpang").toString()
+        val id_penumpang = bundle?.get("ktp").toString()
 
         intent = Intent(this, ReviewTiket::class.java)
         intent.putExtra("id_kereta", asl)
-        intent.putExtra("id_penumpang",id_penumpang)
+        intent.putExtra("ktp",id_penumpang)
         startActivity(intent)
         return true
     }
@@ -82,10 +82,10 @@ class DataPenumpang : AppCompatActivity() {
         loading.show()
 
         val bundle = intent.extras
-        val id_penum = bundle?.get("id_penumpang").toString()
+        val id_penum = bundle?.get("ktp").toString()
 
         AndroidNetworking.post(ApiKoneksi.READ4)
-            .addBodyParameter("id_penumpang",id_penum)
+            .addBodyParameter("ktp",id_penum)
             .setPriority(Priority.MEDIUM)
             .build()
             .getAsJSONObject(object : JSONObjectRequestListener {
@@ -94,21 +94,21 @@ class DataPenumpang : AppCompatActivity() {
                     val jsonArray = response?.optJSONArray("result")
                     loading.dismiss()
 
-                    for(i in 0 until jsonArray?.length()!!) {
-                        val jsonObject = jsonArray?.optJSONObject(i)
-                        val ktpp = jsonObject.getString("ktp").toString()
-                        val namaa = jsonObject.getString("nama").toString()
-                        val notelpp = jsonObject.getString("notelp").toString()
-                        val emaill = jsonObject.getString("email").toString()
 
-                        if (jsonArray?.length()-1 == i) {
+                        val jsonObject = jsonArray?.optJSONObject(0)
+                        val ktpp = jsonObject?.getString("ktp").toString()
+                        val namaa = jsonObject?.getString("nama").toString()
+                        val notelpp = jsonObject?.getString("notelp").toString()
+                        val emaill = jsonObject?.getString("email").toString()
+
+
                             loading.dismiss()
                             et_ktp.setText(ktpp)
                             et_nama.setText(namaa)
                             et_notelp.setText(notelpp)
                             et_email.setText(emaill)
-                        }
-                    }
+
+
                 }
 
                 override fun onError(anError: ANError?) {

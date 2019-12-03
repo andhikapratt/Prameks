@@ -27,35 +27,35 @@ class ReviewTiket : AppCompatActivity() {
         bt_pesan.setOnClickListener{
             val bundle = intent.extras
             val asl = bundle?.get("id_kereta").toString()
-            val id_penumpang = bundle?.get("id_penumpang").toString()
+            val id_penumpang = bundle?.get("ktp").toString()
 
             intent = Intent(this, DataPenumpang::class.java)
             intent.putExtra("id_kereta", asl)
-            intent.putExtra("id_penumpang", id_penumpang)
+            intent.putExtra("ktp", id_penumpang)
             startActivity(intent)
         }
     }
-
+//==================================================================================================
     override fun onSupportNavigateUp(): Boolean {
         onBackPressed()
         val bundle = intent.extras
-        val id_penumpang = bundle?.get("id_penumpang").toString()
+        val id_penumpang = bundle?.get("ktp").toString()
         val asl = bundle?.get("asal").toString()
         val tuj = bundle?.get("tuju").toString()
 
         intent = Intent(this, TampilTiket::class.java)
-        intent.putExtra("id_penumpang",id_penumpang)
+        intent.putExtra("ktp",id_penumpang)
         intent.putExtra("asal",asl)
         intent.putExtra("tuju",tuj)
         startActivity(intent)
         return true
     }
-
+//==================================================================================================
     override fun onResume(){
         super.onResume()
         TampilReview()
     }
-
+//==================================================================================================
     private fun TampilReview(){
         val loading = ProgressDialog(this)
         loading.setMessage("Memuat data...")
@@ -102,4 +102,5 @@ class ReviewTiket : AppCompatActivity() {
                 }
             })
     }
+//==================================================================================================
 }

@@ -15,7 +15,6 @@ import org.json.JSONObject
 import android.content.Intent as Intent1
 
 class Login : AppCompatActivity() {
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
@@ -24,8 +23,12 @@ class Login : AppCompatActivity() {
         bt_go.setOnClickListener{
             CekLogin()
         }
+        txt_register.setOnClickListener(){
+            intent = Intent1(this, Registrasi::class.java)
+            startActivity(intent)
+        }
     }
-
+//==================================================================================================
     private fun CekLogin(){
         val loading = ProgressDialog(this)
         loading.setMessage("Memeriksa Data...")
@@ -47,13 +50,13 @@ class Login : AppCompatActivity() {
 
                     for(i in 0 until jsonArray?.length()!!) {
                         val jsonObject = jsonArray?.optJSONObject(i)
-                        val id_penumpang = jsonObject.getString("id_penumpang").toString()
+                        val id_penumpang = jsonObject.getString("ktp").toString()
 
                         if (jsonArray?.length()-1 == i){
                             tv_id_ambil.setText(id_penumpang)
                             val id_kir = tv_id_ambil.text
                             intent = Intent1(this@Login, CariTiket::class.java)
-                            intent.putExtra("id_penumpang",id_kir)
+                            intent.putExtra("ktp",id_kir)
                             startActivity(intent)
                         }
                     }
@@ -70,4 +73,5 @@ class Login : AppCompatActivity() {
                 }
             })
     }
+//==================================================================================================
 }

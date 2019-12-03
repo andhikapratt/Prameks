@@ -6,6 +6,8 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import android.widget.AdapterView
 import android.widget.Toast
@@ -18,7 +20,6 @@ import kotlinx.android.synthetic.main.activity_caritiket.*
 import org.json.JSONObject
 
 class CariTiket : AppCompatActivity() {
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_caritiket)
@@ -26,10 +27,9 @@ class CariTiket : AppCompatActivity() {
         loading.dismiss()
         val actionbar = supportActionBar
         actionbar!!.title = "Prameks"
-        actionbar.setDisplayHomeAsUpEnabled(true)
 
         val bundle = intent.extras
-        val id_penumpang = bundle?.get("id_penumpang").toString()
+        val id_penumpang = bundle?.get("ktp").toString()
 
         sp_asal.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(adapterView: AdapterView<*>, view: View, i: Int, l: Long) {
@@ -51,35 +51,58 @@ class CariTiket : AppCompatActivity() {
             var b = tv_tuju.text.toString()
             intent.putExtra("asal",a)
             intent.putExtra("tuju",b)
-            intent.putExtra("id_penumpang",id_penumpang)
+            intent.putExtra("ktp",id_penumpang)
             startActivity(intent)
         }
 
         bt_mytrips.setOnClickListener{
             intent = Intent(this, MyTrips::class.java)
-            intent.putExtra("id_penumpang",id_penumpang)
+            intent.putExtra("ktp",id_penumpang)
             startActivity(intent)
         }
     }
-
-    override fun onSupportNavigateUp(): Boolean {
-        val builder = AlertDialog.Builder(this@CariTiket)
-        builder.setTitle("Logout")
-        builder.setMessage("Apakah anda yakin?")
-
-        builder.setPositiveButton("Ya"){dialog, which ->
-            intent = Intent(this, Login::class.java)
-            startActivity(intent)
-        }
-
-        builder.setNegativeButton("Tidak"){dialog,which ->
-
-        }
-        val dialog: AlertDialog = builder.create()
-        dialog.show()
-        onBackPressed()
-        finish()
+//==================================================================================================
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        val inflater = menuInflater
+        inflater.inflate(R.menu.account, menu)
         return true
     }
+    override fun onOptionsItemSelected(item: MenuItem) = when (item.itemId) {
+        R.id.action_profile -> {
+            val bundle = intent.extras
+            val id_penumpang = bundle?.get("ktp").toString()
+            intent = Intent(this, Profile::class.java)
+            intent.putExtra("ktp",id_penumpang)
+            startActivity(intent)
+            true
+        }
+        R.id.action_logout -> {
+            val builder = AlertDialog.Builder(this@CariTiket)
+            builder.setTitle("Logout")
+            builder.setMessage("Apakah anda yakin?")
+            builder.setPositiveButton("Ya"){dialog, which ->
+                intent = Intent(this, Login::class.java)
+                startActivity(intent)
+                finish()
+            }
 
+            builder.setNegativeButton("Tidak"){dialog,which ->
+                Toast.makeText(this@CariTiket, "", Toast.LENGTH_SHORT).show()
+            }
+
+            builder.setNeutralButton("Batal"){_,_ ->
+
+            }
+            val dialog: AlertDialog = builder.create()
+            dialog.show()
+            true
+        }
+        else -> {
+            super.onOptionsItemSelected(item)
+        }
+    }
+    fun msgShow(msg: String) {
+        Toast.makeText(this, msg, Toast.LENGTH_LONG).show()
+    }
+//==================================================================================================
 }

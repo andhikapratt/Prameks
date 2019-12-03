@@ -35,25 +35,23 @@ class Pembayaran : AppCompatActivity() {
 
         bt_selesai.setOnClickListener{
             create()
-
             val bundle = intent.extras
-            val id_penum = bundle?.get("id_penumpang").toString()
-
+            val id_penum = bundle?.get("ktp").toString()
             intent = Intent(this, DetailPembayaran::class.java)
-            intent.putExtra("id_penumpang", id_penum)
+            intent.putExtra("ktp", id_penum)
             startActivity(intent)
         }
 
         kd_byr.setText(kode)
     }
-
+//==================================================================================================
     private fun create(){
         val loading = ProgressDialog(this)
         loading.setMessage("Menambahkan data...")
         loading.show()
         val bundle = intent.extras
         val id_kereta = bundle?.get("id_kereta").toString()
-        val id_penum = bundle?.get("id_penumpang").toString()
+        val id_penum = bundle?.get("ktp").toString()
         val metode = tv_bankk.text.toString()
 
         println(kode+" "+id_kereta+" "+id_penum+" "+metode)
@@ -79,4 +77,5 @@ class Pembayaran : AppCompatActivity() {
                 }
             })
     }
+//==================================================================================================
 }

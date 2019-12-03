@@ -16,10 +16,10 @@ class DetailPembayaran : AppCompatActivity() {
 
         bt_kembali.setOnClickListener{
             val bundle = intent.extras
-            val id_penum = bundle?.get("id_penumpang").toString()
+            val id_penum = bundle?.get("ktp").toString()
 
             intent = Intent(this, CariTiket::class.java)
-            intent.putExtra("id_penumpang", id_penum)
+            intent.putExtra("ktps", id_penum)
             startActivity(intent)
             finish()
         }

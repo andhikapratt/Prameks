@@ -31,10 +31,10 @@ class TampilTiket : AppCompatActivity() {
     override fun onSupportNavigateUp(): Boolean {
         onBackPressed()
         val bundle = intent.extras
-        val id_penumpang = bundle?.get("id_penumpang").toString()
+        val id_penumpang = bundle?.get("ktp").toString()
 
         intent = Intent(this, CariTiket::class.java)
-        intent.putExtra("id_penumpang",id_penumpang)
+        intent.putExtra("ktp",id_penumpang)
         startActivity(intent)
         return true
     }
@@ -52,13 +52,13 @@ class TampilTiket : AppCompatActivity() {
             val bundle = intent.extras
             val asl = bundle?.get("asal").toString()
             val tuj = bundle?.get("tuju").toString()
-            val id_penumpang = bundle?.get("id_penumpang").toString()
+            val id_penumpang = bundle?.get("ktp").toString()
 
             intent = Intent(this, ReviewTiket::class.java)
             intent.putExtra("asal",asl)
             intent.putExtra("tuju",tuj)
             intent.putExtra("id_kereta",a)
-            intent.putExtra("id_penumpang",id_penumpang)
+            intent.putExtra("ktp",id_penumpang)
             startActivity(intent)
         }
     }
