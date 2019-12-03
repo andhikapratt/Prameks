@@ -19,7 +19,7 @@ class DetailPembayaran : AppCompatActivity() {
             val id_penum = bundle?.get("ktp").toString()
 
             intent = Intent(this, CariTiket::class.java)
-            intent.putExtra("ktps", id_penum)
+            intent.putExtra("ktp", id_penum)
             startActivity(intent)
             finish()
         }
