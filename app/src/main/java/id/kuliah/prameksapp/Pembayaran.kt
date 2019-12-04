@@ -52,6 +52,7 @@ class Pembayaran : AppCompatActivity() {
         val bundle = intent.extras
         val id_kereta = bundle?.get("id_kereta").toString()
         val id_penum = bundle?.get("ktp").toString()
+        val hari = bundle?.get("hari").toString()
         val metode = tv_bankk.text.toString()
 
         println(kode+" "+id_kereta+" "+id_penum+" "+metode)
@@ -61,6 +62,7 @@ class Pembayaran : AppCompatActivity() {
             .addBodyParameter("id_akun",id_penum)
             .addBodyParameter("kode_bayar",kode)
             .addBodyParameter("metode_bayar",metode)
+            .addBodyParameter("hari",hari)
             .setPriority(Priority.MEDIUM)
             .build()
             .getAsJSONObject(object : JSONObjectRequestListener {

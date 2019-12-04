@@ -110,6 +110,7 @@ class MyTrips : AppCompatActivity() {
                     val list_e = arrayListOf<String>()
                     val list_f = arrayListOf<String>()
                     val list_g = arrayListOf<String>()
+                    val list_h = arrayListOf<String>()
 
                     for(i in 0 until jsonArray?.length()!!) {
                         val jsonObject = jsonArray?.optJSONObject(i)
@@ -121,10 +122,11 @@ class MyTrips : AppCompatActivity() {
                         list_e.add((jsonObject.getString("jam_brk")).toString())
                         list_f.add((jsonObject.getString("jam_smp")).toString())
                         list_g.add((jsonObject.getString("harga")).toString())
+                        list_h.add((jsonObject.getString("hari")).toString())
 
                         if (jsonArray?.length()-1 == i) {
                             loading.dismiss()
-                            val adapter = LvAdapterMyTrips(this@MyTrips, list_a, list_b, list_c, list_d, list_e, list_f, list_g)
+                            val adapter = LvAdapterMyTrips(this@MyTrips, list_a, list_b, list_c, list_d, list_e, list_f, list_g, list_h)
                             lvnya.adapter = adapter
                         }
                     }

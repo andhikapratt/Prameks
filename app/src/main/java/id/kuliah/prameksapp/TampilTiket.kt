@@ -25,7 +25,11 @@ class TampilTiket : AppCompatActivity() {
         actionbar!!.title = "Tiket Kereta"
         actionbar.setDisplayHomeAsUpEnabled(true)
 
-        carisepur()
+        val bundle = intent.extras
+        val hari = bundle?.get("hari").toString()
+        tv_hari.setText("Keberangkatan : "+hari)
+
+        kliksepur()
     }
 
     override fun onSupportNavigateUp(): Boolean {
@@ -44,7 +48,7 @@ class TampilTiket : AppCompatActivity() {
         TampilSepur()
     }
 
-    private fun carisepur(){
+    private fun kliksepur(){
         lvnya.setOnItemClickListener{adapterView, view, position, id ->
 
             val idnya = adapterView.getItemAtPosition(position)
@@ -53,12 +57,14 @@ class TampilTiket : AppCompatActivity() {
             val asl = bundle?.get("asal").toString()
             val tuj = bundle?.get("tuju").toString()
             val id_penumpang = bundle?.get("ktp").toString()
+            val hari = bundle?.get("hari").toString()
 
             intent = Intent(this, ReviewTiket::class.java)
             intent.putExtra("asal",asl)
             intent.putExtra("tuju",tuj)
             intent.putExtra("id_kereta",a)
             intent.putExtra("ktp",id_penumpang)
+            intent.putExtra("hari",hari)
             startActivity(intent)
         }
     }

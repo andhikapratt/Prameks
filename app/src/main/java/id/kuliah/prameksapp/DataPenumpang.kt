@@ -30,6 +30,7 @@ class DataPenumpang : AppCompatActivity() {
         val bundle = intent.extras
         val id_kereta = bundle?.get("id_kereta").toString()
         val id_penum = bundle?.get("ktp").toString()
+        val hari = bundle?.get("hari").toString()
 
         bt_go.setOnClickListener{
             val builder = AlertDialog.Builder(this@DataPenumpang)
@@ -39,6 +40,7 @@ class DataPenumpang : AppCompatActivity() {
                 intent = Intent(this, Pembayaran::class.java)
                 intent.putExtra("id_kereta", id_kereta)
                 intent.putExtra("ktp", id_penum)
+                intent.putExtra("hari", hari)
                 startActivity(intent)
             }
 
@@ -62,10 +64,12 @@ class DataPenumpang : AppCompatActivity() {
         val bundle = intent.extras
         val asl = bundle?.get("id_kereta").toString()
         val id_penumpang = bundle?.get("ktp").toString()
+        val hari = bundle?.get("hari").toString()
 
         intent = Intent(this, ReviewTiket::class.java)
         intent.putExtra("id_kereta", asl)
         intent.putExtra("ktp",id_penumpang)
+        intent.putExtra("hari", hari)
         startActivity(intent)
         return true
     }

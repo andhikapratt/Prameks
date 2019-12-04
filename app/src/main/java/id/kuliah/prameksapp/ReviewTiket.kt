@@ -24,14 +24,18 @@ class ReviewTiket : AppCompatActivity() {
         actionbar.setDisplayHomeAsUpEnabled(true)
         actionbar.setDisplayHomeAsUpEnabled(true)
 
-        bt_pesan.setOnClickListener{
-            val bundle = intent.extras
-            val asl = bundle?.get("id_kereta").toString()
-            val id_penumpang = bundle?.get("ktp").toString()
+        val bundle = intent.extras
+        val asl = bundle?.get("id_kereta").toString()
+        val id_penumpang = bundle?.get("ktp").toString()
+        val hari = bundle?.get("hari").toString()
 
+        txt_hari.setText(hari)
+
+        bt_pesan.setOnClickListener{
             intent = Intent(this, DataPenumpang::class.java)
             intent.putExtra("id_kereta", asl)
             intent.putExtra("ktp", id_penumpang)
+            intent.putExtra("hari", hari)
             startActivity(intent)
         }
     }
@@ -42,11 +46,13 @@ class ReviewTiket : AppCompatActivity() {
         val id_penumpang = bundle?.get("ktp").toString()
         val asl = bundle?.get("asal").toString()
         val tuj = bundle?.get("tuju").toString()
+        val hari = bundle?.get("hari").toString()
 
         intent = Intent(this, TampilTiket::class.java)
         intent.putExtra("ktp",id_penumpang)
         intent.putExtra("asal",asl)
         intent.putExtra("tuju",tuj)
+        intent.putExtra("hari", hari)
         startActivity(intent)
         return true
     }
